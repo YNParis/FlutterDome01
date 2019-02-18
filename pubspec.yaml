@@ -20,3 +20,12 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+
+fonts:
+   - family: MyCustomFont
+     fonts:
+       - asset: fonts/FZLanTingHeiS-L-GB-Regular.ttf
+       - weight: FontWeight.bold
+
+
+
