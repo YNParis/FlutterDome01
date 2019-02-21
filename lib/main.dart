@@ -39,5 +39,6 @@ class MyApp extends StatelessWidget {
 }
 
 void main() async {
+  print('try print');
   runApp(new MaterialApp(home: new MyApp()));
 }
