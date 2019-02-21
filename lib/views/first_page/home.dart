@@ -5,6 +5,10 @@ import 'package:flutter_app_demo01/model/widget.dart';
 import 'package:flutter_app_demo01/resources/widget_name_to_icon.dart';
 import 'package:flutter_app_demo01/routers/application.dart';
 import 'package:flutter_app_demo01/utils/provider.dart';
+import 'package:flutter_app_demo01/views/collection_page/collection_page.dart';
+import 'package:flutter_app_demo01/views/first_page/first_page.dart';
+import 'package:flutter_app_demo01/views/welcome_page/fourth_page.dart';
+import 'package:flutter_app_demo01/views/widget_page/widget_page.dart';
 import 'package:flutter_app_demo01/widgets/index.dart';
 
 const int themeColor = 0xFFC91B3A;
@@ -14,7 +18,7 @@ class AppPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
-    return null;
+    return _MyHomePageState();
   }
 
 
@@ -46,37 +50,65 @@ class _MyHomePageState extends State<AppPage>
           controller: controller,
           children: <Widget>[
             //TODO 加入页面
+            new FirstPage(),
+            new WidgetPage(),
+            new CollectionPage(),
+            new FourthPage(),
 
-
-          ]),
+          ])
+      ,
       bottomNavigationBar: Material(
         color: Colors.grey,
         child: SafeArea(child: Container(
-          height: 65.0,
+          height:
+          65.0,
           decoration: BoxDecoration(
-              color: Colors.lightBlue,
+              color: Colors.
+              lightBlue,
               boxShadow: <BoxShadow>[
                 BoxShadow(
                   color: const Color(0xFFd0d0d0),
-                  blurRadius: 3.0,
+                  blurRadius:
+                  3.0,
                   spreadRadius: 2.0,
-                  offset: Offset(-1.0, -1.0),
+                  offset: Offset(
+                      -1.0, -1.0),
                 )
               ]
-          ),
+          )
+          ,
           child: TabBar(controller: controller,
-              indicatorColor: Theme
+              indicatorColor
+                  : Theme
                   .of(context)
                   .primaryColor,
               indicatorWeight: 3.0,
               labelColor: Theme
-                  .of(context)
-                  .primaryColor,
-              unselectedLabelColor: const Color(0xFF8E8E8E),
-              tabs: myTabs),
-        )),
+                  .of(
+                  context
+              )
+                  .
+              primaryColor
+              ,
+              unselectedLabelColor
+                  :
+              const
+              Color
+                (
+                  0xFF8E8E8E
+              )
+              ,
+              tabs
+                  :
+              myTabs
+          )
+          ,
+        )
+        )
+        ,
 
-      ),
+      )
+      ,
     );
   }
 
