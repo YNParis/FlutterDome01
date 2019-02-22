@@ -10,6 +10,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_app_demo01/views/welcome_page/fourth_page.dart';
+import 'package:flutter_app_demo01/views/layout_widget_exercise_page/layout_exercise_01.dart';
 
 class WelcomePage extends StatefulWidget {
   WelcomePage({Key key}) : super(key: key);
@@ -24,9 +25,6 @@ class _WelcomePageState extends State<WelcomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return new Container(
-        color: Colors.white,
-        child: FourthPage()
-    );
+    return new LakePage();
   }
 }
