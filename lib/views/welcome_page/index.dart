@@ -13,7 +13,6 @@ import 'package:flutter_app_demo01/views/welcome_page/fourth_page.dart';
 import 'package:flutter_app_demo01/views/layout_widget_exercise_page/layout_exercise_01.dart';
 
 class WelcomePage extends StatefulWidget {
-  WelcomePage({Key key}) : super(key: key);
 
   @override
   _WelcomePageState createState() {

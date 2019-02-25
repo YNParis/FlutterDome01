@@ -10,6 +10,6 @@ Widget CustomButton(BuildContext context, IconData icon, String title) {
       Icon(icon, color: color,),
       Padding(padding: EdgeInsets.all(20.0),
         child: Text(title, style: TextStyle(color: color),),),
-    ],
+  ],
   );
 }

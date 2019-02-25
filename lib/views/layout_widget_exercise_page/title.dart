@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_demo01/views/layout_widget_exercise_page/favorate_button.dart';
 
 class TitleWidget extends StatefulWidget {
 
@@ -35,19 +36,7 @@ class TitleWidgetState extends State<TitleWidget> {
                       fontSize: 20.0))
             ],
           ),),
-
-        Row(children: <Widget>[
-          IconButton(icon: icon, onPressed: () {
-            if()
-            setState(() {
-              if () {
-                num+=
-              }
-            });
-          }),
-          Text(num.toString())
-        ],),
-
+        FavorateButton(),
       ],
     );
   }
