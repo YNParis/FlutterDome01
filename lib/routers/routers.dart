@@ -13,6 +13,8 @@ class Routes {
   static String notFoundPage = '/category/error/404';
   static String categoryPage = '/category/:type';
 
+  static String stack = '/layout-page';
+
 
   static void configureRoutes(Router router) {
     List widgetDemoList = new WidgetDemoList().getDemos();
@@ -24,6 +26,9 @@ class Routes {
     router.define(notFoundPage, handler: widgetNotFoundHandler);
     router.define(codeView, handler: fullScreenCodeDialog);
     router.define(webViewPage, handler: webViewPageHand);
+
+    router.define(stack, handler: stackHandler);
+
     widgetDemoList.forEach((demo) {
       Handler handler = new Handler(
           handlerFunc: (BuildContext context,

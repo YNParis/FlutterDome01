@@ -1,20 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_demo01/views/layout_widget_exercise_page/stack.dart';
 
 class LayoutPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return new Scaffold(
-      appBar: AppBar(
-        title: Text('布局类widgets'),
-      ),
       body: Column(
         children: <Widget>[
           FlexLayout(),
           ExpandedLayout(),
           WrapLayout(),
           FlowLayout(),
-          StackLayout()
+          StackLayout('param title')
         ],
       )
       ,
@@ -146,28 +144,3 @@ class TestFlowDelegate extends FlowDelegate {
 
 }
 
-class StackLayout extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
-    return new Stack(
-      alignment: Alignment.center, //todo 指定未定位或部分定位widget的对齐方式，不管用
-      children: <Widget>[
-        Container(
-          child: Text("Hello world", style: TextStyle(color: Colors.white)),
-          color: Colors.red,
-        ),
-        Positioned(
-          left: 18.0,
-          child: Text("I am Jack"),
-        ),
-        Positioned(
-          top: 18.0,
-          child: Text("Your friend"),
-        )
-      ],
-
-    );
-  }
-
-}
