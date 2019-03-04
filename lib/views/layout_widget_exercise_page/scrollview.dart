@@ -213,15 +213,15 @@ class CustomScrollViewPage extends StatelessWidget {
       child: CustomScrollView(
         slivers: <Widget>[
           //AppBar，包含一个导航栏
-          SliverAppBar(
-            pinned: true,
-            expandedHeight: 250.0,
-            flexibleSpace: FlexibleSpaceBar(
-              title: const Text('demo'),
-              background: Image.asset('./images/lake.png',
-                  fit: BoxFit.cover),
-            ),
-          ),
+//          SliverAppBar(
+//            pinned: true,
+//            expandedHeight: 250.0,
+//            flexibleSpace: FlexibleSpaceBar(
+//              title: const Text('demo'),
+//              background: Image.asset('./images/lake.png',
+//                  fit: BoxFit.cover),
+//            ),
+//          ),
           SliverPadding(
             padding: const EdgeInsets.all(8.0),
             sliver: SliverGrid(
@@ -284,8 +284,8 @@ class _ScrollControllerStateState extends State<ScrollControllerState> {
         });
       }
     });
-    _controller.
   }
+
 
   @override
   void dispose() {
@@ -319,6 +319,46 @@ class _ScrollControllerStateState extends State<ScrollControllerState> {
     );
   }
 }
+
+class ScrollNotificationRoute extends StatefulWidget {
+  @override
+  _ScrollNotificationRouteState createState() =>
+      new _ScrollNotificationRouteState();
+}
+
+class _ScrollNotificationRouteState extends State<ScrollNotificationRoute> {
+
+  String _progress = '0%'; //保存进度百分比
+
+  @override
+  Widget build(BuildContext context) {
+    return new Scrollbar(
+      child: NotificationListener<ScrollNotification>(
+        child: Stack(
+          alignment: Alignment.center,
+          children: <Widget>[
+            ListView.builder(
+              itemBuilder: (c, i) => ListTile(title: Text('$i'),),
+              itemExtent: 50.0,
+              itemCount: 50,),
+            CircleAvatar(
+              radius: 30.0,
+              child: Text(_progress),
+              backgroundColor: Colors.pink[100],
+            )
+          ],
+        ),
+        onNotification: (ScrollNotification n) {
+          double progress = n.metrics.pixels / n.metrics.maxScrollExtent;
+
+          setState(() {
+            _progress =
+            '${(progress * 100).toInt()}%';
+          });
+        },),);
+  }
+}
+
 
 
 

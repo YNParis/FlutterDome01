@@ -3,6 +3,9 @@ import 'package:fluro/fluro.dart';
 import 'package:flutter_app_demo01/components/category.dart';
 import 'package:flutter_app_demo01/components/full_screen_code_dialog.dart';
 import 'package:flutter_app_demo01/views/first_page/home.dart';
+import 'package:flutter_app_demo01/views/layout_widget_exercise_page/animation_test.dart';
+import 'package:flutter_app_demo01/views/layout_widget_exercise_page/container_layout.dart';
+import 'package:flutter_app_demo01/views/layout_widget_exercise_page/gesture_detector.dart';
 import 'package:flutter_app_demo01/views/layout_widget_exercise_page/layout_widget.dart';
 import 'package:flutter_app_demo01/views/layout_widget_exercise_page/stack.dart';
 import 'package:flutter_app_demo01/views/web_page/web_view_page.dart';
@@ -45,5 +48,20 @@ var stackHandler = new Handler(
     handlerFunc: (BuildContext context, Map<String, List<String>> params) {
       String center = 'center';
       return new LayoutPage();
+    }
+);
+var gestureHandler = new Handler(
+    handlerFunc: (BuildContext context, Map<String, List<String>> params) {
+      return new GestureDetectorRoute();
+    }
+);
+var animationHandler = new Handler(
+    handlerFunc: (BuildContext context, Map<String, List<String>> params) {
+      return new AnimationRoute();
+    }
+);
+var containerHandler = new Handler(
+    handlerFunc: (BuildContext context, Map<String, List<String>> params) {
+      return new ContainerLayoutRoute();
     }
 );

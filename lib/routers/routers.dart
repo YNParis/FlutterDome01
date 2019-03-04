@@ -14,6 +14,10 @@ class Routes {
   static String categoryPage = '/category/:type';
 
   static String stack = '/layout-page';
+  static String getsturePage = '/gesture-detector';
+  static String animationPage = '/animation';
+  static String containerPage = '/container';
+
 
 
   static void configureRoutes(Router router) {
@@ -28,6 +32,9 @@ class Routes {
     router.define(webViewPage, handler: webViewPageHand);
 
     router.define(stack, handler: stackHandler);
+    router.define(getsturePage, handler: gestureHandler);
+    router.define(animationPage, handler: animationHandler);
+    router.define(containerPage, handler: containerHandler);
 
     widgetDemoList.forEach((demo) {
       Handler handler = new Handler(

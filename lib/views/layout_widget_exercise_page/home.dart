@@ -4,6 +4,8 @@ import 'package:flutter_app_demo01/main.dart';
 import 'package:flutter_app_demo01/routers/application.dart';
 import 'package:flutter_app_demo01/routers/router_handler.dart';
 import 'package:flutter_app_demo01/routers/routers.dart';
+import 'package:flutter_app_demo01/views/layout_widget_exercise_page/animation_test.dart';
+import 'package:flutter_app_demo01/views/layout_widget_exercise_page/gesture_detector.dart';
 import 'package:flutter_app_demo01/views/layout_widget_exercise_page/layout_widget.dart';
 import 'package:flutter_app_demo01/views/layout_widget_exercise_page/scrollview.dart';
 import 'package:flutter_app_demo01/views/layout_widget_exercise_page/stack.dart';
@@ -38,33 +40,35 @@ class HomePageState extends State<HomePage>
     });
     return Scaffold(
       key: _globalKey,
-//      appBar: AppBar(
-//        title: Text('Flutter Demo01'),
-//        leading: Builder(builder: (context) {
-//          //自定义leading，设置侧滑菜单的按钮，默认是菜单按钮三条横线
-//          return IconButton(
-//              icon: Icon(Icons.dashboard),
-//              color: Colors.white,
-//              onPressed: () {
-////                Scaffold.of(context).openDrawer();
-//                _globalKey.currentState.openDrawer();
-//              });
-//        }),
-//        actions: <Widget>[
-//          IconButton(
-//              icon: Icon(Icons.share),
-//              onPressed: () {
+      appBar: AppBar(
+        title: Text('Flutter Demo01'),
+        leading: Builder(builder: (context) {
+          //自定义leading，设置侧滑菜单的按钮，默认是菜单按钮三条横线，默认也有点击时间，是打开左侧drawer菜单
+          return IconButton(
+              icon: Icon(Icons.dashboard),
+              color: Colors.white,
+              onPressed: () {
+//                Scaffold.of(context).openDrawer();
+                _globalKey.currentState.openDrawer();
+              });
+        }),
+        actions: <Widget>[
+          IconButton(
+              icon: Icon(Icons.share),
+              onPressed: () {
 //                Application.router.navigateTo(context, "$stackPage");
-//              }), //标题栏右侧的菜单，做分享按钮
-//        ],
-//
-//      ),
+                //弹出分享页面
+                _showDialog(context);
+              }), //标题栏右侧的菜单，做分享按钮
+        ],
+
+      ),
       body: TabBarView(
         controller: controller,
         children: <Widget>[
           CustomScrollViewPage(),
-          ScrollControllerState(),
-          InfiniteGridView(),
+          StaggerDemo(),
+          PagesListRoute(),
         ],
       ),
       drawer: new MyDrawer(),
@@ -95,10 +99,19 @@ class HomePageState extends State<HomePage>
     });
   }
 
-  void _add() {
-
+  void _showDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (_) =>
+          AlertDialog(
+            title: Text('分享至'),
+            actions: <Widget>[
+              FlatButton(onPressed: () {
+                Navigator.of(context).pop();
+              }, child: Text('OK'))
+            ],
+          ),);
   }
-
 }
 
 class MyDrawer extends StatelessWidget {
@@ -112,7 +125,7 @@ class MyDrawer extends StatelessWidget {
     return Drawer(
       child: MediaQuery.removePadding(
           context: context,
-          removeTop: true,
+          removeTop: true, //列表上方的空白
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
@@ -155,4 +168,58 @@ class MyDrawer extends StatelessWidget {
   }
 
 }
+
+class PagesListRoute extends StatefulWidget {
+  @override
+  _PagesListRouteState createState() => new _PagesListRouteState();
+}
+
+class _PagesListRouteState extends State<PagesListRoute> {
+
+  var titles = <String>[
+    'gesture-detector',
+    'animation',
+    'container'
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: <Widget>[
+        Container(
+          child: Text('路由列表', style: TextStyle(color: Colors.white),
+            textScaleFactor: 1.5,),
+          //不设置宽度默认是最大
+          padding: const EdgeInsets.all(20.0),
+          color: Theme
+              .of(context)
+              .primaryColor,
+          alignment: Alignment.centerLeft,
+        ),
+        Expanded(
+            child: ListView.separated(
+
+              itemCount: titles.length,
+              separatorBuilder: (context, index) =>
+                  Divider(
+                    height: 2.0,
+                    color: Theme
+                        .of(context)
+                        .primaryColor,
+                  ),
+              itemBuilder: (context, index) =>
+                  ListTile(
+                    title: Text(titles[index]),
+                    onTap: () {
+                      Application.router.navigateTo(
+                          context, '/${titles[index]}');
+                    },
+                  ),
+            ))
+      ],
+    );
+  }
+
+}
+
 
