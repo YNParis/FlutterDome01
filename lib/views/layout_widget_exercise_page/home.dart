@@ -179,23 +179,25 @@ class _PagesListRouteState extends State<PagesListRoute> {
   var titles = <String>[
     'gesture-detector',
     'animation',
-    'container'
+    'container',
+    'willpopscope',
+    'themeData'
   ];
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        Container(
-          child: Text('路由列表', style: TextStyle(color: Colors.white),
-            textScaleFactor: 1.5,),
-          //不设置宽度默认是最大
-          padding: const EdgeInsets.all(20.0),
-          color: Theme
-              .of(context)
-              .primaryColor,
-          alignment: Alignment.centerLeft,
-        ),
+//        Container(
+//          child: Text('路由列表', style: TextStyle(color: Colors.white),
+//            textScaleFactor: 1.5,),
+//          //不设置宽度默认是最大
+//          padding: const EdgeInsets.all(20.0),
+//          color: Theme
+//              .of(context)
+//              .primaryColor,
+//          alignment: Alignment.centerLeft,
+//        ),
         Expanded(
             child: ListView.separated(
 

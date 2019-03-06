@@ -237,8 +237,8 @@ class ContainerSizeRoute extends StatelessWidget {
           maxWidth: 300.0,
           maxHeight: 300.0
       ),
-      width: 300.0, //与设置constraints参数的效果是一样的
-      height: 300.0,
+      width: 40.0, //与设置constraints参数的效果是一样的，同时设置的话这个优先
+      height: 40.0,
       color: Colors.red,
     );
   }

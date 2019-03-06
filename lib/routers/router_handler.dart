@@ -8,6 +8,8 @@ import 'package:flutter_app_demo01/views/layout_widget_exercise_page/container_l
 import 'package:flutter_app_demo01/views/layout_widget_exercise_page/gesture_detector.dart';
 import 'package:flutter_app_demo01/views/layout_widget_exercise_page/layout_widget.dart';
 import 'package:flutter_app_demo01/views/layout_widget_exercise_page/stack.dart';
+import 'package:flutter_app_demo01/views/layout_widget_exercise_page/theme_data.dart';
+import 'package:flutter_app_demo01/views/layout_widget_exercise_page/will_pop_scope.dart';
 import 'package:flutter_app_demo01/views/web_page/web_view_page.dart';
 import '../widgets/404.dart';
 
@@ -63,5 +65,15 @@ var animationHandler = new Handler(
 var containerHandler = new Handler(
     handlerFunc: (BuildContext context, Map<String, List<String>> params) {
       return new ContainerLayoutRoute();
+    }
+);
+var willpopscopeHandler = new Handler(
+    handlerFunc: (BuildContext context, Map<String, List<String>> params) {
+      return new WillPopScopeTestRoute();
+    }
+);
+var themeDataHandler = new Handler(
+    handlerFunc: (BuildContext context, Map<String, List<String>> params) {
+      return new ThemeDataRoute();
     }
 );

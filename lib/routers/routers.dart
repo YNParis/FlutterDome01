@@ -17,6 +17,8 @@ class Routes {
   static String getsturePage = '/gesture-detector';
   static String animationPage = '/animation';
   static String containerPage = '/container';
+  static String willpopscopePage = '/willpopscope';
+  static String themeDataPage = '/themeData';
 
 
 
@@ -35,6 +37,8 @@ class Routes {
     router.define(getsturePage, handler: gestureHandler);
     router.define(animationPage, handler: animationHandler);
     router.define(containerPage, handler: containerHandler);
+    router.define(willpopscopePage, handler: willpopscopeHandler);
+    router.define(themeDataPage, handler: themeDataHandler);
 
     widgetDemoList.forEach((demo) {
       Handler handler = new Handler(
