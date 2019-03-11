@@ -19,6 +19,9 @@ class Routes {
   static String containerPage = '/container';
   static String willpopscopePage = '/willpopscope';
   static String themeDataPage = '/themeData';
+  static String pointerPage = '/pointer';
+  static String inheritedPage = '/inheritedWidget';
+  static String constriantPage = '/constriant';
 
 
 
@@ -39,6 +42,9 @@ class Routes {
     router.define(containerPage, handler: containerHandler);
     router.define(willpopscopePage, handler: willpopscopeHandler);
     router.define(themeDataPage, handler: themeDataHandler);
+    router.define(pointerPage, handler: pointerHandler);
+    router.define(inheritedPage, handler: inheritedHandler);
+    router.define(constriantPage, handler: constraintHandler);
 
     widgetDemoList.forEach((demo) {
       Handler handler = new Handler(

@@ -16,10 +16,7 @@ class MyApp extends StatelessWidget {
     //在该类下进行router的配置，将设置好的值赋值给application的router，相当于全局变量。
     // 以后再其他任意一个类当中调用
     Application.router = router;
-
-    ApplicationEvent.event = new EventBus();
     themeData = tealDay;
-    _registerEventBus();
   }
 
   ThemeData themeData;
@@ -30,15 +27,9 @@ class MyApp extends StatelessWidget {
       onGenerateRoute: Application.router.generator,
       home: HomePage(),
       theme: this.themeData,
+
 //      debugShowMaterialGrid: true, //显示窗格，UI设计时的那种参考线。每格8pixel，粗线2pixel，细线1pixel，如 控件设置宽40.0，则占满5格
     );
-  }
-
-  void _registerEventBus() {
-    ApplicationEvent.event.on<ThemeEvent>().listen((ThemeEvent onData) =>
-        () {
-      this.themeData = onData.themeData;
-    });
   }
 
 }

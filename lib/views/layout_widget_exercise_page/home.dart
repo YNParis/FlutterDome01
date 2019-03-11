@@ -181,7 +181,10 @@ class _PagesListRouteState extends State<PagesListRoute> {
     'animation',
     'container',
     'willpopscope',
-    'themeData'
+    'themeData',
+    'pointer',
+    'inheritedWidget',
+    'constriant'
   ];
 
   @override

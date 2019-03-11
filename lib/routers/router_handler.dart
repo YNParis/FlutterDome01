@@ -4,9 +4,12 @@ import 'package:flutter_app_demo01/components/category.dart';
 import 'package:flutter_app_demo01/components/full_screen_code_dialog.dart';
 import 'package:flutter_app_demo01/views/first_page/home.dart';
 import 'package:flutter_app_demo01/views/layout_widget_exercise_page/animation_test.dart';
+import 'package:flutter_app_demo01/views/layout_widget_exercise_page/constraint_container.dart';
 import 'package:flutter_app_demo01/views/layout_widget_exercise_page/container_layout.dart';
 import 'package:flutter_app_demo01/views/layout_widget_exercise_page/gesture_detector.dart';
+import 'package:flutter_app_demo01/views/layout_widget_exercise_page/inherited_widget.dart';
 import 'package:flutter_app_demo01/views/layout_widget_exercise_page/layout_widget.dart';
+import 'package:flutter_app_demo01/views/layout_widget_exercise_page/pointer.dart';
 import 'package:flutter_app_demo01/views/layout_widget_exercise_page/stack.dart';
 import 'package:flutter_app_demo01/views/layout_widget_exercise_page/theme_data.dart';
 import 'package:flutter_app_demo01/views/layout_widget_exercise_page/will_pop_scope.dart';
@@ -75,5 +78,20 @@ var willpopscopeHandler = new Handler(
 var themeDataHandler = new Handler(
     handlerFunc: (BuildContext context, Map<String, List<String>> params) {
       return new ThemeDataRoute();
+    }
+);
+var pointerHandler = new Handler(
+    handlerFunc: (BuildContext context, Map<String, List<String>> params) {
+      return new PointerLayoutRoute();
+    }
+);
+var inheritedHandler = new Handler(
+    handlerFunc: (BuildContext context, Map<String, List<String>> params) {
+      return new InheritedLayout();
+    }
+);
+var constraintHandler = new Handler(
+    handlerFunc: (BuildContext context, Map<String, List<String>> params) {
+      return new ConstraintBoxLayout();
     }
 );

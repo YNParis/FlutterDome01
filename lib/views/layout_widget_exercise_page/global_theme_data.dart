@@ -15,7 +15,7 @@ var tealDay = ThemeData(
 );
 
 var night = ThemeData(
-  primarySwatch: Colors.black54,
+  primarySwatch: Colors.pink,
   brightness: Brightness.dark,
   iconTheme: IconThemeData(color: Colors.blue[300]),
   textTheme: TextTheme(body1: TextStyle(color: Colors.white),
