@@ -22,7 +22,7 @@ class Routes {
   static String pointerPage = '/pointer';
   static String inheritedPage = '/inheritedWidget';
   static String constriantPage = '/constriant';
-
+  static String notificationPage = '/notification';
 
 
   static void configureRoutes(Router router) {
@@ -45,6 +45,7 @@ class Routes {
     router.define(pointerPage, handler: pointerHandler);
     router.define(inheritedPage, handler: inheritedHandler);
     router.define(constriantPage, handler: constraintHandler);
+    router.define(notificationPage, handler: notificationHandler);
 
     widgetDemoList.forEach((demo) {
       Handler handler = new Handler(

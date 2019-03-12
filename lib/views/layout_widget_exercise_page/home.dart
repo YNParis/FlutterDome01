@@ -184,7 +184,8 @@ class _PagesListRouteState extends State<PagesListRoute> {
     'themeData',
     'pointer',
     'inheritedWidget',
-    'constriant'
+    'constriant',
+    'notification'
   ];
 
   @override

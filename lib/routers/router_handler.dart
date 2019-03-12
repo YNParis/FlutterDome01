@@ -9,6 +9,7 @@ import 'package:flutter_app_demo01/views/layout_widget_exercise_page/container_l
 import 'package:flutter_app_demo01/views/layout_widget_exercise_page/gesture_detector.dart';
 import 'package:flutter_app_demo01/views/layout_widget_exercise_page/inherited_widget.dart';
 import 'package:flutter_app_demo01/views/layout_widget_exercise_page/layout_widget.dart';
+import 'package:flutter_app_demo01/views/layout_widget_exercise_page/notification_layout.dart';
 import 'package:flutter_app_demo01/views/layout_widget_exercise_page/pointer.dart';
 import 'package:flutter_app_demo01/views/layout_widget_exercise_page/stack.dart';
 import 'package:flutter_app_demo01/views/layout_widget_exercise_page/theme_data.dart';
@@ -93,5 +94,10 @@ var inheritedHandler = new Handler(
 var constraintHandler = new Handler(
     handlerFunc: (BuildContext context, Map<String, List<String>> params) {
       return new ConstraintBoxLayout();
+    }
+);
+var notificationHandler = new Handler(
+    handlerFunc: (BuildContext context, Map<String, List<String>> params) {
+      return new NotificationLayout();
     }
 );

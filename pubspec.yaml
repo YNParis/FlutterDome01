@@ -33,6 +33,7 @@ dev_dependencies:
   intl: 0.15.7
   city_pickers: ^0.1.0
   flutter_staggered_grid_view: ^0.2.7
+  fish_redux: ^0.1.1
 
 flutter:
   uses-material-design: true

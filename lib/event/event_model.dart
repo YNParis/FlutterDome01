@@ -11,7 +11,7 @@ class CollectionEvent {
 
 class ThemeEvent {
   final ThemeData themeData;
-  final bool isChanged;
+  final bool isChanged;//目前没用
 
   ThemeEvent(this.themeData, this.isChanged);
 }
