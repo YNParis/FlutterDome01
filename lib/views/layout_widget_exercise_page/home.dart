@@ -177,6 +177,9 @@ class PagesListRoute extends StatefulWidget {
 class _PagesListRouteState extends State<PagesListRoute> {
 
   var titles = <String>[
+    'net',
+    'gomoku',
+    'customWidget',
     'gesture-detector',
     'animation',
     'container',
@@ -190,39 +193,24 @@ class _PagesListRouteState extends State<PagesListRoute> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-//        Container(
-//          child: Text('路由列表', style: TextStyle(color: Colors.white),
-//            textScaleFactor: 1.5,),
-//          //不设置宽度默认是最大
-//          padding: const EdgeInsets.all(20.0),
-//          color: Theme
-//              .of(context)
-//              .primaryColor,
-//          alignment: Alignment.centerLeft,
-//        ),
-        Expanded(
-            child: ListView.separated(
+    return ListView.separated(
 
-              itemCount: titles.length,
-              separatorBuilder: (context, index) =>
-                  Divider(
-                    height: 2.0,
-                    color: Theme
-                        .of(context)
-                        .primaryColor,
-                  ),
-              itemBuilder: (context, index) =>
-                  ListTile(
-                    title: Text(titles[index]),
-                    onTap: () {
-                      Application.router.navigateTo(
-                          context, '/${titles[index]}');
-                    },
-                  ),
-            ))
-      ],
+      itemCount: titles.length,
+      separatorBuilder: (context, index) =>
+          Divider(
+            height: 2.0,
+            color: Theme
+                .of(context)
+                .primaryColor,
+          ),
+      itemBuilder: (context, index) =>
+          ListTile(
+            title: Text(titles[index]),
+            onTap: () {
+              Application.router.navigateTo(
+                  context, '/${titles[index]}');
+            },
+          ),
     );
   }
 

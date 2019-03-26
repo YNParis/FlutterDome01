@@ -23,6 +23,9 @@ class Routes {
   static String inheritedPage = '/inheritedWidget';
   static String constriantPage = '/constriant';
   static String notificationPage = '/notification';
+  static String customWidgetPage = '/customWidget';
+  static String gomokuPage = '/gomoku';
+  static String netPage = '/net';
 
 
   static void configureRoutes(Router router) {
@@ -46,6 +49,9 @@ class Routes {
     router.define(inheritedPage, handler: inheritedHandler);
     router.define(constriantPage, handler: constraintHandler);
     router.define(notificationPage, handler: notificationHandler);
+    router.define(customWidgetPage, handler: customWidgetHandler);
+    router.define(gomokuPage, handler: gomokuHandler);
+    router.define(netPage, handler: netHandler);
 
     widgetDemoList.forEach((demo) {
       Handler handler = new Handler(

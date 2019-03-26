@@ -40,11 +40,6 @@ flutter:
   assets:
    - images/lake.png
 
-fonts:
-   - family: MyCustomFont
-     fonts:
-       - asset: fonts/FZLanTingHeiS-L-GB-Regular.ttf
-       - weight: FontWeight.bold
 
 
 
