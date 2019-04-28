@@ -3,7 +3,9 @@ import 'package:fluro/fluro.dart';
 import 'package:flutter_app_demo01/components/category.dart';
 import 'package:flutter_app_demo01/components/full_screen_code_dialog.dart';
 import 'package:flutter_app_demo01/views/first_page/home.dart';
+import 'package:flutter_app_demo01/views/layout_widget_exercise_page/android_view.dart';
 import 'package:flutter_app_demo01/views/layout_widget_exercise_page/animation_test.dart';
+import 'package:flutter_app_demo01/views/layout_widget_exercise_page/camera.dart';
 import 'package:flutter_app_demo01/views/layout_widget_exercise_page/constraint_container.dart';
 import 'package:flutter_app_demo01/views/layout_widget_exercise_page/container_layout.dart';
 import 'package:flutter_app_demo01/views/layout_widget_exercise_page/custom_widget.dart';
@@ -117,5 +119,15 @@ var gomokuHandler = new Handler(
 var netHandler = new Handler(
     handlerFunc: (BuildContext context, Map<String, List<String>> params) {
       return new HttpTestRoute();
+    }
+);
+var nativeViewHandler = new Handler(
+    handlerFunc: (BuildContext context, Map<String, List<String>> params) {
+      return new AndroidNativeViewRoute();
+    }
+);
+var cameraHandler = new Handler(
+    handlerFunc: (BuildContext context, Map<String, List<String>> params) {
+      return new CameraRoute();
     }
 );

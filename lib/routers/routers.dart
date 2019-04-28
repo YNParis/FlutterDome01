@@ -26,6 +26,8 @@ class Routes {
   static String customWidgetPage = '/customWidget';
   static String gomokuPage = '/gomoku';
   static String netPage = '/net';
+  static String androidViewPage = '/AndroidView';
+  static String cameraPage = '/camera';
 
 
   static void configureRoutes(Router router) {
@@ -52,6 +54,8 @@ class Routes {
     router.define(customWidgetPage, handler: customWidgetHandler);
     router.define(gomokuPage, handler: gomokuHandler);
     router.define(netPage, handler: netHandler);
+    router.define(androidViewPage, handler: nativeViewHandler);
+    router.define(cameraPage, handler: cameraHandler);
 
     widgetDemoList.forEach((demo) {
       Handler handler = new Handler(

@@ -10,6 +10,7 @@ import 'package:flutter_app_demo01/views/layout_widget_exercise_page/layout_widg
 import 'package:flutter_app_demo01/views/layout_widget_exercise_page/scrollview.dart';
 import 'package:flutter_app_demo01/views/layout_widget_exercise_page/stack.dart';
 
+
 class HomePage extends StatefulWidget {
   @override
   HomePageState createState() => HomePageState();
@@ -18,13 +19,11 @@ class HomePage extends StatefulWidget {
 class HomePageState extends State<HomePage>
     with SingleTickerProviderStateMixin {
 
-  var _selectedIndex = 1;
   static GlobalKey<ScaffoldState> _globalKey = new GlobalKey();
   TabController controller;
-  List tabs = ['NEWS', 'HISTORY', 'PICTURE'];
+  List tabs = ['HOME', 'ANIMATION', 'FUNCTIONS'];
   Router router = new Router();
   String stackPage = Routes.stack;
-
 
   @override
   void initState() {
@@ -35,9 +34,6 @@ class HomePageState extends State<HomePage>
   @override
   Widget build(BuildContext context) {
     Application.controller = controller;
-    controller.addListener(() {
-      _onItemTapped;
-    });
     return Scaffold(
       key: _globalKey,
       appBar: AppBar(
@@ -48,7 +44,7 @@ class HomePageState extends State<HomePage>
               icon: Icon(Icons.dashboard),
               color: Colors.white,
               onPressed: () {
-//                Scaffold.of(context).openDrawer();
+//                Scaffold.of(context).openDrawer();//和下面的语句实现的效果是一样的
                 _globalKey.currentState.openDrawer();
               });
         }),
@@ -56,7 +52,6 @@ class HomePageState extends State<HomePage>
           IconButton(
               icon: Icon(Icons.share),
               onPressed: () {
-//                Application.router.navigateTo(context, "$stackPage");
                 //弹出分享页面
                 _showDialog(context);
               }), //标题栏右侧的菜单，做分享按钮
@@ -66,9 +61,9 @@ class HomePageState extends State<HomePage>
       body: TabBarView(
         controller: controller,
         children: <Widget>[
+          PagesListRoute(),
           CustomScrollViewPage(),
           StaggerDemo(),
-          PagesListRoute(),
         ],
       ),
       drawer: new MyDrawer(),
@@ -85,32 +80,55 @@ class HomePageState extends State<HomePage>
         unselectedLabelColor: const Color(0xFF8E8E8E),
         tabs: <Widget>[
           Tab(text: tabs[0], icon: Icon(Icons.home),),
-          Tab(text: tabs[1], icon: Icon(Icons.business),),
-          Tab(text: tabs[2], icon: Icon(Icons.school),),
+          Tab(text: tabs[1], icon: Icon(Icons.book),),
+          Tab(text: tabs[2], icon: Icon(Icons.list),),
         ],
 
       ),
     );
   }
 
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
 
   void _showDialog(BuildContext context) {
-    showDialog(
-      context: context,
-      builder: (_) =>
-          AlertDialog(
-            title: Text('分享至'),
-            actions: <Widget>[
-              FlatButton(onPressed: () {
-                Navigator.of(context).pop();
-              }, child: Text('OK'))
+    var titles = <String>['微信好友', '朋友圈', '微博', 'QQ好友', 'QQ空间'];
+    var imgs = <String>[
+      'images/wechat_logo.png',
+      'images/wechat_logo.png',
+      'images/wechat_logo.png',
+      'images/wechat_logo.png',
+      'images/wechat_logo.png'
+    ];
+
+    //从下方弹出的dialog，高度是builder返回控件的高度
+    showModalBottomSheet
+      (context: context, builder: (_) =>
+        Container(
+          height: 200.0,
+          child: Column(
+            children: <Widget>[
+              Text('分享到'),
+              Container(
+                height: 120.0,
+                child: GridView.builder(
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 5,
+                      childAspectRatio: 0.7 //宽高比
+                  ),
+                  itemCount: 5,
+                  itemBuilder: (c, i) =>
+                      _ShareItem(img: imgs[i], title: titles[i], index: i,),
+                  physics: NeverScrollableScrollPhysics(),
+                ),
+              ),
+              FlatButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: Text('取消'))
             ],
-          ),);
+          ),
+
+        ));
   }
 }
 
@@ -177,6 +195,8 @@ class PagesListRoute extends StatefulWidget {
 class _PagesListRouteState extends State<PagesListRoute> {
 
   var titles = <String>[
+    'camera',
+    'AndroidView',
     'net',
     'gomoku',
     'customWidget',
@@ -215,5 +235,71 @@ class _PagesListRouteState extends State<PagesListRoute> {
   }
 
 }
+
+class _ShareItem extends StatefulWidget {
+  _ShareItem({
+    this.title,
+    this.img,
+    this.index
+  });
+
+  final String img;
+  final String title;
+  final int index;
+
+  @override
+  __ShareItemState createState() => new __ShareItemState();
+}
+
+class __ShareItemState extends State<_ShareItem> {
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Image.asset(
+            widget.img,
+            height: 80.0,
+            width: 80.0,
+            fit: BoxFit.cover,),
+          Text(
+            widget.title,
+            overflow: TextOverflow.ellipsis,
+          )
+        ],
+
+      ),
+      onTap: () {
+        _shareToSpecifiedPlatform(widget.index);
+      },
+    );
+  }
+
+  _shareToSpecifiedPlatform(int index) {
+    switch (index) {
+      case 0:
+      //分享到微信好友
+        break;
+      case 1:
+      //分享到微信朋友圈
+        break;
+      case 2:
+      //分享到微博
+
+        break;
+      case 3:
+      //分享到QQ好友
+        break;
+      case 4:
+      //分享到QQ空间
+        break;
+      default:
+      //Do nothing.
+        break;
+    }
+  }
+}
+
 
 
