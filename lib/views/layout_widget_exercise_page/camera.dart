@@ -1,8 +1,12 @@
 import 'dart:io';
 
+import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter_app_demo01/routers/application.dart';
+import 'package:flutter_app_demo01/routers/router_handler.dart';
+import 'package:flutter_app_demo01/routers/routers.dart';
+import 'package:flutter_app_demo01/views/layout_widget_exercise_page/camera_result.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:video_player/video_player.dart';
 
@@ -149,6 +153,7 @@ class _CameraRouteState extends State<CameraRoute> with WidgetsBindingObserver {
     return Row(children: toggles);
   }
 
+  ///展示拍照或视频结果的缩略图
   /// Display the thumbnail of the captured image or video.
   Widget _thumbnailWidget() {
     return Expanded(
@@ -157,19 +162,31 @@ class _CameraRouteState extends State<CameraRoute> with WidgetsBindingObserver {
         child: videoController == null && imagePath == null
             ? null
             : SizedBox(
-                child: (videoController == null)
-                    ? Image.file(File(imagePath))
-                    : Container(
-                        child: Center(
-                          child: AspectRatio(
-                              aspectRatio: videoController.value.size != null
-                                  ? videoController.value.aspectRatio
-                                  : 1.0,
-                              child: VideoPlayer(videoController)),
-                        ),
-                        decoration: BoxDecoration(
-                            border: Border.all(color: Colors.pink)),
-                      ),
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(context,
+                        new MaterialPageRoute(builder: (context) {
+                      return CameraResult(imagePath, videoPath);
+                    }));
+                  },
+                  child: Hero(
+                    tag: 'cameraResult',
+                    child: (videoController == null)
+                        ? Image.file(File(imagePath))
+                        : Container(
+                            child: Center(
+                              child: AspectRatio(
+                                  aspectRatio:
+                                      videoController.value.size != null
+                                          ? videoController.value.aspectRatio
+                                          : 1.0,
+                                  child: VideoPlayer(videoController)),
+                            ),
+                            decoration: BoxDecoration(
+                                border: Border.all(color: Colors.pink)),
+                          ),
+                  ),
+                ),
                 width: 64.0,
                 height: 64.0,
               ),
@@ -255,9 +272,10 @@ class _CameraRouteState extends State<CameraRoute> with WidgetsBindingObserver {
           if (videoController != null) {
             if (videoController.value.isPlaying) {
               //如果当前正在播放视频，先停止播放，再dispose
-              videoController.pause();
+              videoController.pause().then((value) {
+                videoController.dispose();
+              });
             }
-            videoController.dispose();
             videoController = null;
           }
         });

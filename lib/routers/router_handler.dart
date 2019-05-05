@@ -6,6 +6,7 @@ import 'package:flutter_app_demo01/views/first_page/home.dart';
 import 'package:flutter_app_demo01/views/layout_widget_exercise_page/android_view.dart';
 import 'package:flutter_app_demo01/views/layout_widget_exercise_page/animation_test.dart';
 import 'package:flutter_app_demo01/views/layout_widget_exercise_page/camera.dart';
+import 'package:flutter_app_demo01/views/layout_widget_exercise_page/camera_result.dart';
 import 'package:flutter_app_demo01/views/layout_widget_exercise_page/constraint_container.dart';
 import 'package:flutter_app_demo01/views/layout_widget_exercise_page/container_layout.dart';
 import 'package:flutter_app_demo01/views/layout_widget_exercise_page/custom_widget.dart';
@@ -39,95 +40,81 @@ var categoryHandler = new Handler(
 
 var widgetNotFoundHandler = new Handler(
     handlerFunc: (BuildContext context, Map<String, List<String>> params) {
-      return new WidgetNotFound();
-    });
+  return new WidgetNotFound();
+});
 
 var fullScreenCodeDialog = new Handler(
     handlerFunc: (BuildContext context, Map<String, List<String>> params) {
-      String path = params['filePath']?.first;
-      return new FullScreenCodeDialog();
-    });
+  String path = params['filePath']?.first;
+  return new FullScreenCodeDialog();
+});
 
 var webViewPageHand = new Handler(
     handlerFunc: (BuildContext context, Map<String, List<String>> params) {
-      String title = params['title']?.first;
-      String url = params['url']?.first;
-      return new WebViewPage();
-    });
+  String title = params['title']?.first;
+  String url = params['url']?.first;
+  return new WebViewPage();
+});
 
 var stackHandler = new Handler(
     handlerFunc: (BuildContext context, Map<String, List<String>> params) {
-      String center = 'center';
-      return new LayoutPage();
-    }
-);
+  String center = 'center';
+  return new LayoutPage();
+});
 var gestureHandler = new Handler(
     handlerFunc: (BuildContext context, Map<String, List<String>> params) {
-      return new GestureDetectorRoute();
-    }
-);
+  return new GestureDetectorRoute();
+});
 var animationHandler = new Handler(
     handlerFunc: (BuildContext context, Map<String, List<String>> params) {
-      return new AnimationRoute();
-    }
-);
+  return new AnimationRoute();
+});
 var containerHandler = new Handler(
     handlerFunc: (BuildContext context, Map<String, List<String>> params) {
-      return new ContainerLayoutRoute();
-    }
-);
+  return new ContainerLayoutRoute();
+});
 var willpopscopeHandler = new Handler(
     handlerFunc: (BuildContext context, Map<String, List<String>> params) {
-      return new WillPopScopeTestRoute();
-    }
-);
+  return new WillPopScopeTestRoute();
+});
 var themeDataHandler = new Handler(
     handlerFunc: (BuildContext context, Map<String, List<String>> params) {
-      return new ThemeDataRoute();
-    }
-);
+  return new ThemeDataRoute();
+});
 var pointerHandler = new Handler(
     handlerFunc: (BuildContext context, Map<String, List<String>> params) {
-      return new PointerLayoutRoute();
-    }
-);
+  return new PointerLayoutRoute();
+});
 var inheritedHandler = new Handler(
     handlerFunc: (BuildContext context, Map<String, List<String>> params) {
-      return new InheritedLayout();
-    }
-);
+  return new InheritedLayout();
+});
 var constraintHandler = new Handler(
     handlerFunc: (BuildContext context, Map<String, List<String>> params) {
-      return new ConstraintBoxLayout();
-    }
-);
+  return new ConstraintBoxLayout();
+});
 var notificationHandler = new Handler(
     handlerFunc: (BuildContext context, Map<String, List<String>> params) {
-      return new NotificationLayout();
-    }
-);
+  return new NotificationLayout();
+});
 var customWidgetHandler = new Handler(
     handlerFunc: (BuildContext context, Map<String, List<String>> params) {
-      return new CustomWidgetRoute();
-    }
-);
+  return new CustomWidgetRoute();
+});
 var gomokuHandler = new Handler(
     handlerFunc: (BuildContext context, Map<String, List<String>> params) {
-      return new GomokuRoute();
-    }
-);
+  return new GomokuRoute();
+});
 var netHandler = new Handler(
     handlerFunc: (BuildContext context, Map<String, List<String>> params) {
-      return new HttpTestRoute();
-    }
-);
+  return new HttpTestRoute();
+});
 var nativeViewHandler = new Handler(
     handlerFunc: (BuildContext context, Map<String, List<String>> params) {
-      return new AndroidNativeViewRoute();
-    }
-);
+  return new AndroidNativeViewRoute();
+});
 var cameraHandler = new Handler(
     handlerFunc: (BuildContext context, Map<String, List<String>> params) {
-      return new CameraRoute();
-    }
-);
+  return new CameraRoute();
+});
+var cameraResultHandler;

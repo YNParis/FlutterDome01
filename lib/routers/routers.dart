@@ -28,6 +28,8 @@ class Routes {
   static String netPage = '/net';
   static String androidViewPage = '/AndroidView';
   static String cameraPage = '/camera';
+  static String cameraResult = '/cameraResult';
+
 
 
   static void configureRoutes(Router router) {
@@ -56,6 +58,7 @@ class Routes {
     router.define(netPage, handler: netHandler);
     router.define(androidViewPage, handler: nativeViewHandler);
     router.define(cameraPage, handler: cameraHandler);
+    router.define(cameraResult, handler: cameraResultHandler);
 
     widgetDemoList.forEach((demo) {
       Handler handler = new Handler(
