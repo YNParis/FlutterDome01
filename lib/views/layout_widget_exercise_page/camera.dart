@@ -29,7 +29,6 @@ void logError(String code, String message) =>
 
 class _CameraRouteState extends State<CameraRoute> with WidgetsBindingObserver {
   CameraController controller;
-  VideoPlayerController vcontroller;
   String imagePath;
   String videoPath;
   VideoPlayerController videoController;
@@ -253,10 +252,14 @@ class _CameraRouteState extends State<CameraRoute> with WidgetsBindingObserver {
       if (mounted) {
         setState(() {
           imagePath = filePath;
-          videoController?.dispose();
-          videoController = null;
-          vcontroller?.dispose();
-          vcontroller = null;
+          if (videoController != null) {
+            if (videoController.value.isPlaying) {
+              //如果当前正在播放视频，先停止播放，再dispose
+              videoController.pause();
+            }
+            videoController.dispose();
+            videoController = null;
+          }
         });
         if (filePath != null) print('Picture saved to $filePath');
       }
@@ -341,7 +344,7 @@ class _CameraRouteState extends State<CameraRoute> with WidgetsBindingObserver {
   }
 
   Future<void> _startVideoPlayer() async {
-    vcontroller = VideoPlayerController.file(File(videoPath));
+    final vcontroller = VideoPlayerController.file(File(videoPath));
     videoPlayerListener = () {
       if (videoController != null && videoController.value.size != null) {
         // Refreshing the state to update video player with the correct ratio.
