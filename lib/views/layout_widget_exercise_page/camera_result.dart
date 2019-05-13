@@ -71,5 +71,5 @@ class CameraResultState extends State<CameraResult> {
     await vcontroller.play();
   }
 
-  
+
 }

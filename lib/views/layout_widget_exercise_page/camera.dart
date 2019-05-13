@@ -154,7 +154,6 @@ class _CameraRouteState extends State<CameraRoute> with WidgetsBindingObserver {
   }
 
   ///展示拍照或视频结果的缩略图
-  /// Display the thumbnail of the captured image or video.
   Widget _thumbnailWidget() {
     return Expanded(
       child: Align(
